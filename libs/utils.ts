@@ -1,5 +1,4 @@
 import { formatInTimeZone } from 'date-fns-tz';
-import { load } from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/hybrid.css';
 
@@ -8,19 +7,26 @@ export const formatDate = (date: string) => {
 };
 
 export const formatRichText = (richText: string) => {
-  const $ = load(richText, null, false);
-  const highlight = (text: string, lang?: string) => {
-    if (!lang) return hljs.highlightAuto(text);
-    try {
-      return hljs.highlight(text, { language: lang?.replace(/^language-/, '') || '' });
-    } catch (e) {
-      return hljs.highlightAuto(text);
-    }
-  };
-  $('pre code').each((_, elm) => {
-    const lang = $(elm).attr('class');
-    const res = highlight($(elm).text(), lang);
-    $(elm).html(res.value);
-  });
-  return $.html();
+  return richText.replace(
+    /<pre><code(?: class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
+    (_, lang, code) => {
+      const decoded = code
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
+      const highlight = (text: string, l?: string) => {
+        if (!l) return hljs.highlightAuto(text);
+        try {
+          return hljs.highlight(text, { language: l.replace(/^language-/, '') });
+        } catch {
+          return hljs.highlightAuto(text);
+        }
+      };
+      const result = highlight(decoded, lang);
+      const classAttr = lang ? ` class="${lang}"` : '';
+      return `<pre><code${classAttr}>${result.value}</code></pre>`;
+    },
+  );
 };

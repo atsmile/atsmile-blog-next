@@ -38,3 +38,10 @@ next-env.d.ts
 
 playwright-report
 test-results
+
+# wrangler
+.wrangler
+.dev.vars
+
+.open-next
+
