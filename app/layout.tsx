@@ -1,7 +1,7 @@
 import { getTagList } from '@/libs/microcms';
 import { LIMIT } from '@/constants';
 import Header from '@layout/Header';
-import Footer from '@/components/Footer';
+import Footer from '@layout/Footer';
 import Nav from '@/components/Nav';
 import './globals.css';
 import styles from './layout.module.css';
