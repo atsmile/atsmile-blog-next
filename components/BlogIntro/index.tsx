@@ -1,7 +1,7 @@
 export default function BlogIntro() {
   return (
     <section className="mb-12">
-      <h2 className="text-2xl font-bold mb-4 text-green-500">このブログについて</h2>
+      <h1 className="text-3xl font-bold mb-4 text-green-500">このブログについて</h1>
       <div className="flex flex-col gap-3 text-gray-600">
         <p>
           フロントエンドエンジニアとして活動しています。
