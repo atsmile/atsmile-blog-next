@@ -1,5 +1,6 @@
-import { formatRichText } from '@/libs/utils';
-import { type Article } from '@/libs/microcms';
+import { formatRichText } from '@libs/utils';
+import { replaceLinksWithOgpCards } from '@libs/ogpCard';
+import type { Article } from '@libs/microcms';
 import PublishedDate from '../Date';
 import styles from './index.module.css';
 import TagList from '../TagList';
@@ -9,7 +10,9 @@ type Props = {
   data: Article;
 };
 
-export default function Article({ data }: Props) {
+export default async function Article({ data }: Props) {
+  const content = await replaceLinksWithOgpCards(formatRichText(data.content));
+
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{data.title}</h1>
@@ -54,12 +57,7 @@ export default function Article({ data }: Props) {
           height={data.thumbnail?.height}
         />
       </picture>
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{
-          __html: `${formatRichText(data.content)}`,
-        }}
-      />
+      <div className={styles.content} dangerouslySetInnerHTML={{ __html: content }} />
       <Profile writer={data.writer} />
     </main>
   );
