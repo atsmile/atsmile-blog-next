@@ -45,20 +45,9 @@ body {
     'メイリオ',
     Meiryo,
     sans-serif;
-  color: var(--color-text-main);
   line-height: 1.8;
 }
 
 code {
   font-family: menlo, inconsolata, monospace;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ol,
-ul {
-  list-style: none;
 }
