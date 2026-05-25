@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Article } from '@/libs/microcms';
-import styles from './index.module.css';
+import { Article } from '@libs/microcms';
 import TagList from '../TagList';
 import PublishedDate from '../Date';
 
@@ -11,42 +10,22 @@ type Props = {
 
 export default function ArticleListItem({ article }: Props) {
   return (
-    <li className={styles.list}>
-      <Link href={`/articles/${article.id}`} className={styles.link}>
-        {article.thumbnail ? (
-          <picture>
-            <source
-              type="image/webp"
-              media="(max-width: 640px)"
-              srcSet={`${article.thumbnail?.url}?fm=webp&w=414 1x, ${article.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
-            />
-            <source
-              type="image/webp"
-              srcSet={`${article.thumbnail?.url}?fm=webp&fit=crop&w=240&h=126 1x, ${article.thumbnail?.url}?fm=webp&fit=crop&w=240&h=126&dpr=2 2x`}
-            />
-            <img
-              src={article.thumbnail?.url || `/noimage.png`}
-              alt=""
-              className={styles.image}
-              width={article.thumbnail?.width}
-              height={article.thumbnail?.height}
-            />
-          </picture>
-        ) : (
-          <Image
-            className={styles.image}
-            src="/no-image.png"
-            alt="No Image"
-            width={1200}
-            height={630}
-          />
-        )}
-        <dl className={styles.content}>
-          <dt className={styles.title}>{article.title}</dt>
+    <li className="bg-white rounded-xl p-5 mb-6 border border-green-200">
+      <Link href={`/articles/${article.id}`} className="md:flex md:gap-10">
+        <Image
+          src={article.thumbnail?.url ?? '/no-image.png'}
+          alt="No Image"
+          width={240}
+          height={126}
+          sizes="(max-width: 640px) 414px, 240px"
+          className="w-full mb-2 h-auto md:w-60 md:mb-0"
+        />
+        <dl>
+          <dt className="font-bold text-lg">{article.title}</dt>
           <dd>
             <TagList tags={article.tags} hasLink={false} />
           </dd>
-          <dd className={styles.date}>
+          <dd className="text-sm text-gray-500 text-right">
             <PublishedDate date={article.publishedAt || article.createdAt} />
           </dd>
         </dl>

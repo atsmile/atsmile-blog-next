@@ -10,6 +10,7 @@ export default async function Page() {
   return (
     <>
       <BlogIntro />
+      <h2 className="text-2xl font-bold mb-4 text-green-500">最新記事</h2>
       <ArticleList articles={data.contents} />
     </>
   );
