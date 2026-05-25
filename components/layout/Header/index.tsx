@@ -7,8 +7,8 @@ type NavLink = { label: string; href: string };
 
 const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
+  { label: 'Articles', href: '/articles' },
+  // { label: 'About', href: '/about' },
 ];
 
 export default function Header() {
@@ -22,6 +22,7 @@ export default function Header() {
 
   return (
     <header
+      data-layout="header"
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled ? 'bg-white/90 backdrop-blur border-b border-green-200' : 'bg-transparent'
       }`}
