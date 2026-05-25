@@ -38,8 +38,10 @@ export default async function RootLayout({ children }: Props) {
     <html lang="ja">
       <body>
         <Header />
-        <Nav tags={tags.contents} />
-        <main className={styles.main}>{children}</main>
+        <main className=" mx-auto bg-white p-6 mb-6 border border-green-200 md:p-8 md:w-180 md:rounded-xl">
+          {children}
+          <Nav tags={tags.contents} />
+        </main>
         <Footer />
       </body>
     </html>

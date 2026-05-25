@@ -14,11 +14,11 @@ export default async function Article({ data }: Props) {
   const content = await replaceLinksWithOgpCards(formatRichText(data.content));
 
   return (
-    <main className={styles.main}>
-      <h1 className={styles.title}>{data.title}</h1>
+    <main className="flex flex-col between align-items-center">
+      <h1 className="text-xl md:text-3xl font-bold mb-4 text-center">{data.title}</h1>
       <TagList tags={data.tags} />
       <p className={styles.description}>{data.description}</p>
-      <div className={styles.meta}>
+      <div className="flex items-center justify-between mb-4">
         {data.writer && (
           <div className={styles.writer}>
             <picture>
@@ -57,7 +57,7 @@ export default async function Article({ data }: Props) {
           height={data.thumbnail?.height}
         />
       </picture>
-      <div className={styles.content} dangerouslySetInnerHTML={{ __html: content }} />
+      <div className="content" dangerouslySetInnerHTML={{ __html: content }} />
       <Profile writer={data.writer} />
     </main>
   );

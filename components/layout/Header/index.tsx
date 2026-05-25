@@ -23,8 +23,10 @@ export default function Header() {
   return (
     <header
       data-layout="header"
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur border-b border-green-200' : 'bg-transparent'
+      className={`sticky top-0 z-50 transition-all duration-300 border-b ${
+        scrolled
+          ? 'bg-white/90 backdrop-blur border-green-200'
+          : 'bg-transparent border-transparent'
       }`}
     >
       <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
