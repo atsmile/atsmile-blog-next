@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import SmartLink from '@ui/SmartLink';
 
 type NavLink = { label: string; href: string };
 
 const navLinks: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'Articles', href: '/articles' },
-  // { label: 'About', href: '/about' },
+  { label: 'GitHub', href: 'https://github.com/atsmile' },
 ];
 
 export default function Header() {
@@ -28,21 +28,21 @@ export default function Header() {
       }`}
     >
       <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-        <Link
+        <SmartLink
           href="/"
           className="text-green-600 font-medium text-base hover:text-green-500 transition-colors"
         >
           @smile Blog
-        </Link>
+        </SmartLink>
         <nav className="flex items-center gap-6">
           {navLinks.map((link) => (
-            <Link
+            <SmartLink
               key={link.href}
               href={link.href}
               className="text-sm text-gray-500 hover:text-green-500 transition-colors"
             >
               {link.label}
-            </Link>
+            </SmartLink>
           ))}
         </nav>
       </div>
