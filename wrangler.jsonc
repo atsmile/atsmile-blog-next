@@ -13,4 +13,7 @@
       "service": "atsmile-blog",
     },
   ],
+  "vars": {
+    "MICROCMS_SERVICE_DOMAIN": "atsmile",
+  },
 }
