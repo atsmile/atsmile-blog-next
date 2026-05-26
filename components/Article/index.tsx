@@ -12,7 +12,6 @@ type Props = {
 
 export default async function Article({ data }: Props) {
   const content = await replaceLinksWithOgpCards(formatRichText(data.content));
-  console.log(data);
 
   return (
     <main className="flex flex-col between align-items-center">
