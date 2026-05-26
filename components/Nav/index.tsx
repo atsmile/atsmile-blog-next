@@ -1,7 +1,6 @@
 import { Tag } from '@/libs/microcms';
 import TagList from '@/components/TagList';
 import SearchField from '@/components/SearchField';
-import styles from './index.module.css';
 import { Suspense } from 'react';
 
 type Props = {
@@ -10,7 +9,7 @@ type Props = {
 
 export default function Nav({ tags }: Props) {
   return (
-    <nav className={styles.nav}>
+    <nav className="flex flex-col items-center mt-8 px-6">
       <Suspense fallback={<input type="search" className="loading" placeholder="Loading..." />}>
         <SearchField />
       </Suspense>

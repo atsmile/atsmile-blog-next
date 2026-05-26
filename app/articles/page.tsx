@@ -9,6 +9,7 @@ export default async function Page() {
   });
   return (
     <>
+      <h1 className="text-3xl font-bold mb-4 text-green-500">記事一覧</h1>
       <ArticleList articles={data.contents} />
       <Pagination totalCount={data.totalCount} />
     </>
