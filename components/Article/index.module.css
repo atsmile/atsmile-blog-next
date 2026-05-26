@@ -24,10 +24,6 @@
   margin-left: 16px;
 }
 
-.content *:first-child {
-  margin-top: 0;
-}
-
 @media (max-width: 640px) {
   .meta {
     display: flex;
@@ -49,12 +45,6 @@
 
   .writerName {
     margin-left: 16px;
-  }
-
-  .thumbnail {
-    width: 100%;
-    height: auto;
-    margin-bottom: 40px;
   }
 
   .content {

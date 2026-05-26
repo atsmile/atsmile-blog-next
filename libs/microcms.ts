@@ -26,7 +26,7 @@ export type Blog = {
   title: string;
   description: string;
   content: string;
-  thumbnail?: MicroCMSImage;
+  eyecatch?: MicroCMSImage;
   tags?: Tag[];
   writer?: Writer;
 };

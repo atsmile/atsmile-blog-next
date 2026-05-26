@@ -12,9 +12,9 @@ export default function ArticleListItem({ article }: Props) {
   return (
     <li className="bg-white rounded-xl p-5 mb-6 border border-green-200">
       <Link href={`/articles/${article.id}`} className="md:flex md:gap-10">
-        {article.thumbnail ? (
+        {article.eyecatch ? (
           <Image
-            src={article.thumbnail.url}
+            src={article.eyecatch.url}
             alt=""
             width={240}
             height={126}
