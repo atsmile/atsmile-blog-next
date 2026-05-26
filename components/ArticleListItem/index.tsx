@@ -14,7 +14,7 @@ export default function ArticleListItem({ article }: Props) {
       <Link href={`/articles/${article.id}`} className="md:flex md:gap-10">
         {article.eyecatch ? (
           <Image
-            src={article.eyecatch?.url}
+            src={article.eyecatch.url}
             alt=""
             width={240}
             height={126}
