@@ -12,6 +12,7 @@ type Props = {
 
 export default async function Article({ data }: Props) {
   const content = await replaceLinksWithOgpCards(formatRichText(data.content));
+  console.log(data);
 
   return (
     <main className="flex flex-col between align-items-center">
@@ -38,23 +39,23 @@ export default async function Article({ data }: Props) {
         )}
         <PublishedDate date={data.publishedAt || data.createdAt} />
       </div>
-      {data.thumbnail ? (
+      {data.eyecatch ? (
         <picture>
           <source
             type="image/webp"
             media="(max-width: 640px)"
-            srcSet={`${data.thumbnail.url}?fm=webp&w=414 1x, ${data.thumbnail.url}?fm=webp&w=414&dpr=2 2x`}
+            srcSet={`${data.eyecatch.url}?fm=webp&w=414 1x, ${data.eyecatch.url}?fm=webp&w=414&dpr=2 2x`}
           />
           <source
             type="image/webp"
-            srcSet={`${data.thumbnail.url}?fm=webp&fit=crop&w=960&h=504 1x, ${data.thumbnail.url}?fm=webp&fit=crop&w=960&h=504&dpr=2 2x`}
+            srcSet={`${data.eyecatch.url}?fm=webp&fit=crop&w=960&h=504 1x, ${data.eyecatch.url}?fm=webp&fit=crop&w=960&h=504&dpr=2 2x`}
           />
           <img
-            src={data.thumbnail.url}
+            src={data.eyecatch.url}
             alt=""
             className="w-full h-auto object-cover rounded-lg mb-6"
-            width={data.thumbnail.width}
-            height={data.thumbnail.height}
+            width={data.eyecatch.width}
+            height={data.eyecatch.height}
           />
         </picture>
       ) : (
