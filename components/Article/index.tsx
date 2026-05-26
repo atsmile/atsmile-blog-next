@@ -38,7 +38,7 @@ export default async function Article({ data }: Props) {
         )}
         <PublishedDate date={data.publishedAt || data.createdAt} />
       </div>
-      {data.thumbnail && (
+      {data.thumbnail ? (
         <picture>
           <source
             type="image/webp"
@@ -52,11 +52,17 @@ export default async function Article({ data }: Props) {
           <img
             src={data.thumbnail.url}
             alt=""
-            className="w-240 h-auto object-cover rounded-lg mb-6"
+            className="w-full h-auto object-cover rounded-lg mb-6"
             width={data.thumbnail.width}
             height={data.thumbnail.height}
           />
         </picture>
+      ) : (
+        <div className="w-full h-48 md:h-64 rounded-lg bg-linear-to-br from-amber-300 to-green-300 flex items-center justify-center p-6 mb-6">
+          <span className="text-white text-sm font-semibold leading-relaxed line-clamp-3 text-center text-shadow">
+            {data.title}
+          </span>
+        </div>
       )}
       <div className="content" dangerouslySetInnerHTML={{ __html: content }} />
       <Profile writer={data.writer} />
