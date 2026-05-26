@@ -31,12 +31,6 @@
   margin-left: 16px;
 }
 
-.thumbnail {
-  width: 960px;
-  height: auto;
-  margin-bottom: 64px;
-}
-
 .content *:first-child {
   margin-top: 0;
 }
