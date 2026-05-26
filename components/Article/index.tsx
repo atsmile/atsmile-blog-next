@@ -17,7 +17,6 @@ export default async function Article({ data }: Props) {
     <main className="flex flex-col between align-items-center">
       <h1 className="text-xl md:text-3xl font-bold mb-4 text-green-500">{data.title}</h1>
       <TagList tags={data.tags} />
-      <p className={styles.description}>{data.description}</p>
       <div className="flex items-center justify-between mb-4">
         {data.writer && (
           <div className={styles.writer}>
